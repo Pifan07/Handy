@@ -1,7 +1,10 @@
 # Personal, unsigned Windows x64 build of this fork (not part of any upstream PR).
 name: "Personal Windows Build"
 
-on: workflow_dispatch
+on:
+  push:
+    branches: ["custom/**"]
+  workflow_dispatch:
 
 jobs:
   build:
