@@ -816,6 +816,10 @@
         "label": "Wycisz natychmiast",
         "description": "Wycisz od razu po rozpoczęciu nagrywania zamiast po dźwięku startu, aby nie nagrywać dźwięku w tle. Dźwięk startu jest pomijany."
       },
+      "pauseWhileRecording": {
+        "label": "Wstrzymaj multimedia podczas nagrywania",
+        "description": "Wstrzymuje odtwarzane multimedia, np. film w YouTube, podczas nagrywania i wznawia je potem (tylko Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Dodaj spację na końcu",
         "description": "Dodaj spację po wklejonej transkrypcji"

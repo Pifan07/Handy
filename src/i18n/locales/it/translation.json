@@ -816,6 +816,10 @@
         "label": "Silenzia subito",
         "description": "Silenzia non appena inizia la registrazione invece che dopo il suono di avvio, così da non registrare audio di sottofondo. Il suono di avvio viene saltato."
       },
+      "pauseWhileRecording": {
+        "label": "Metti in pausa i media durante la registrazione",
+        "description": "Mette in pausa i media in riproduzione, come un video di YouTube, durante la registrazione e li riprende dopo (solo Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Aggiungi Spazio Finale",
         "description": "Aggiungi uno spazio dopo la trascrizione incollata"

@@ -816,6 +816,10 @@
         "label": "立即靜音",
         "description": "在錄製開始時立即靜音，而不是在提示音之後，以免錄進背景音訊。將略過開始提示音。"
       },
+      "pauseWhileRecording": {
+        "label": "錄製時暫停媒體",
+        "description": "錄製期間暫停正在播放的媒體（例如 YouTube 影片），結束後再繼續播放（僅限 Windows）。"
+      },
       "appendTrailingSpace": {
         "label": "附加尾部空格",
         "description": "在貼上的轉錄後新增空格"

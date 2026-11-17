@@ -816,6 +816,10 @@
         "label": "Slå lyd fra med det samme",
         "description": "Slå lyden fra, så snart optagelsen starter, i stedet for efter startlyden, så der ikke optages baggrundslyd. Startlyden springes over."
       },
+      "pauseWhileRecording": {
+        "label": "Sæt medier på pause under optagelse",
+        "description": "Sæt afspillende medier som en YouTube-video på pause under optagelse, og genoptag dem bagefter (kun Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Tilføj efterfølgende mellemrum",
         "description": "Tilføj et mellemrum efter indsat transskription"

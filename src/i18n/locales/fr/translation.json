@@ -816,6 +816,10 @@
         "label": "Couper le son immédiatement",
         "description": "Couper le son dès le début de l'enregistrement plutôt qu'après le son de démarrage, afin qu'aucun son de fond ne soit enregistré. Le son de démarrage est ignoré."
       },
+      "pauseWhileRecording": {
+        "label": "Mettre les médias en pause pendant l'enregistrement",
+        "description": "Mettre en pause les médias en cours de lecture, comme une vidéo YouTube, pendant l'enregistrement puis les reprendre (Windows uniquement)."
+      },
       "appendTrailingSpace": {
         "label": "Ajouter une espace final",
         "description": "Ajouter une espace après la transcription collée"

@@ -16,6 +16,7 @@ mod language_detection;
 mod languages;
 mod llm_client;
 mod managers;
+mod media_control;
 mod memory;
 mod notices;
 mod overlay;
@@ -225,6 +226,7 @@ fn initialize_core_logic(app_handle: &AppHandle) {
     app_handle.manage(model_manager.clone());
     app_handle.manage(transcription_manager.clone());
     app_handle.manage(history_manager.clone());
+    app_handle.manage(Arc::new(media_control::MediaControlManager::new()));
     app_handle.manage(tray::TrayState::new());
     app_handle.manage(TranscriptionJobManager::new(app_handle));
 
@@ -735,6 +737,7 @@ pub fn run(cli_args: CliArgs) {
             shortcut::resume_all_bindings,
             shortcut::change_mute_while_recording_setting,
             shortcut::change_mute_immediately_setting,
+            shortcut::change_pause_while_recording_setting,
             shortcut::change_append_trailing_space_setting,
             shortcut::change_lazy_stream_close_setting,
             shortcut::change_vad_enabled_setting,

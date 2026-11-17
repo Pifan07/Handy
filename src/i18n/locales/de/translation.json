@@ -816,6 +816,10 @@
         "label": "Sofort stummschalten",
         "description": "Stummschalten, sobald die Aufnahme beginnt, statt erst nach dem Startton, damit kein Hintergrundton aufgenommen wird. Der Startton entfällt."
       },
+      "pauseWhileRecording": {
+        "label": "Medien während der Aufnahme pausieren",
+        "description": "Laufende Medien wie ein YouTube-Video während der Aufnahme pausieren und danach fortsetzen (nur Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Leerzeichen anhängen",
         "description": "Leerzeichen nach eingefügter Transkription hinzufügen"

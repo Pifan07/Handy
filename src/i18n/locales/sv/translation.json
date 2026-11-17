@@ -816,6 +816,10 @@
         "label": "Stäng av ljudet direkt",
         "description": "Stäng av ljudet så snart inspelningen startar i stället för efter startljudet, så att inget bakgrundsljud spelas in. Startljudet hoppas över."
       },
+      "pauseWhileRecording": {
+        "label": "Pausa media under inspelning",
+        "description": "Pausa media som spelas, till exempel en YouTube-video, under inspelningen och återuppta den efteråt (endast Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Lägg till avslutande mellanslag",
         "description": "Lägg till ett mellanslag efter klistrad transkription"

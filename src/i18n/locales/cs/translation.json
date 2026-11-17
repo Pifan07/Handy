@@ -816,6 +816,10 @@
         "label": "Ztlumit okamžitě",
         "description": "Ztlumit hned po zahájení nahrávání místo až po úvodním zvuku, aby se nenahrával zvuk na pozadí. Úvodní zvuk se přeskočí."
       },
+      "pauseWhileRecording": {
+        "label": "Pozastavit média při nahrávání",
+        "description": "Během nahrávání pozastavit přehrávaná média, například video na YouTube, a poté je obnovit (pouze Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Přidat koncovou mezeru",
         "description": "Přidat mezeru po vloženém přepisu"

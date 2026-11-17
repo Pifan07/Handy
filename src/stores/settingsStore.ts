@@ -170,6 +170,8 @@ const settingUpdaters: {
     commands.changeMuteWhileRecordingSetting(value as boolean),
   mute_immediately: (value) =>
     commands.changeMuteImmediatelySetting(value as boolean),
+  pause_while_recording: (value) =>
+    commands.changePauseWhileRecordingSetting(value as boolean),
   append_trailing_space: (value) =>
     commands.changeAppendTrailingSpaceSetting(value as boolean),
   log_level: (value) => commands.setLogLevel(value as any),

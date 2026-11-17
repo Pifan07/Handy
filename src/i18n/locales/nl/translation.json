@@ -816,6 +816,10 @@
         "label": "Direct dempen",
         "description": "Dempen zodra de opname start in plaats van na het startgeluid, zodat er geen achtergrondgeluid wordt opgenomen. Het startgeluid wordt overgeslagen."
       },
+      "pauseWhileRecording": {
+        "label": "Media pauzeren tijdens opname",
+        "description": "Afspelende media zoals een YouTube-video pauzeren tijdens de opname en daarna hervatten (alleen Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Spatie achteraan toevoegen",
         "description": "Voeg een spatie toe na de geplakte transcriptie"

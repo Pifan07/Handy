@@ -816,6 +816,10 @@
         "label": "Silencia immediatament",
         "description": "Silencia tan bon punt comença l'enregistrament en lloc de després del so d'inici, perquè no s'enregistri àudio de fons. El so d'inici s'omet."
       },
+      "pauseWhileRecording": {
+        "label": "Posa en pausa els mitjans durant l'enregistrament",
+        "description": "Posa en pausa els mitjans en reproducció, com un vídeo de YouTube, durant l'enregistrament i reprèn-los després (només Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Afegiu un espai al final",
         "description": "Afegeix un espai après de la transcripció enganxada"

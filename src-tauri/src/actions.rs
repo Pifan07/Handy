@@ -8,6 +8,7 @@ use crate::managers::model::ModelManager;
 use crate::managers::transcription::policy::{live_decode, LiveDecode, ModelTraits};
 use crate::managers::transcription::StreamWorkKind;
 use crate::managers::transcription::{Transcription, TranscriptionManager};
+use crate::media_control::MediaControlManager;
 use crate::notices::{self, Notice, NoticeCode, NoticeSource};
 use crate::settings::{get_settings, AppSettings, OverlayStyle, APPLE_INTELLIGENCE_PROVIDER_ID};
 use crate::shortcut;
@@ -636,6 +637,16 @@ impl ShortcutAction for TranscribeAction {
                     rm.apply_mute();
                 }
 
+                // Pause playing media off the shortcut thread: the Windows
+                // media session calls can take a moment.
+                if settings.pause_while_recording {
+                    if let Some(media) = app.try_state::<Arc<MediaControlManager>>() {
+                        let media = Arc::clone(&media);
+                        let app_clone = app.clone();
+                        std::thread::spawn(move || media.pause_for_recording(&app_clone));
+                    }
+                }
+
                 let app_clone = app.clone();
                 let rm_clone = Arc::clone(&rm);
                 std::thread::spawn(move || {
@@ -743,8 +754,18 @@ impl ShortcutAction for TranscribeAction {
         // Unmute before playing audio feedback so the stop sound is audible
         rm.remove_mute();
 
-        // Play audio feedback for recording stop
-        play_feedback_sound(app, SoundType::Stop);
+        // Play audio feedback for recording stop. Paused media resumes only
+        // after the stop sound, so the sound stays audible.
+        if let Some(media) = app.try_state::<Arc<MediaControlManager>>() {
+            let media = Arc::clone(&media);
+            let app_clone = app.clone();
+            std::thread::spawn(move || {
+                play_feedback_sound_blocking(&app_clone, SoundType::Stop);
+                media.resume_after_recording();
+            });
+        } else {
+            play_feedback_sound(app, SoundType::Stop);
+        }
 
         let binding_id = binding_id.to_string(); // Clone binding_id for the async task
         let post_process = self.post_process;

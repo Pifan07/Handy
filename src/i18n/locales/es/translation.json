@@ -816,6 +816,10 @@
         "label": "Silenciar inmediatamente",
         "description": "Silenciar en cuanto empieza la grabación en lugar de después del sonido de inicio, para que no se grabe audio de fondo. Se omite el sonido de inicio."
       },
+      "pauseWhileRecording": {
+        "label": "Pausar multimedia durante la grabación",
+        "description": "Pausar la reproducción multimedia, como un vídeo de YouTube, durante la grabación y reanudarla después (solo Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Agregar espacio final",
         "description": "Agregar un espacio después de la transcripción pegada"

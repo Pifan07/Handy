@@ -816,6 +816,10 @@
         "label": "Hemen Sessize Al",
         "description": "Başlangıç sesinden sonra değil, kayıt başlar başlamaz sessize alır; böylece arka plan sesi kaydedilmez. Başlangıç sesi atlanır."
       },
+      "pauseWhileRecording": {
+        "label": "Kayıt Sırasında Medyayı Duraklat",
+        "description": "Kayıt sırasında YouTube videosu gibi oynatılan medyayı duraklatır ve sonra devam ettirir (yalnızca Windows)."
+      },
       "appendTrailingSpace": {
         "label": "Sonuna Boşluk Ekle",
         "description": "Yapıştırılan transkripsiyondan sonra boşluk ekler"
