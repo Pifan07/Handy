@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Sæt medier på pause under optagelse",
-        "description": "Sæt afspillende medier som en YouTube-video på pause under optagelse, og genoptag dem bagefter (kun Windows)."
+        "description": "Sæt afspillende medier som en YouTube-video på pause under optagelse, og genoptag dem bagefter (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Tilføj efterfølgende mellemrum",

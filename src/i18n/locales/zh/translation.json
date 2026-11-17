@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "录制时暂停媒体",
-        "description": "录制期间暂停正在播放的媒体（例如 YouTube 视频），结束后再继续播放（仅限 Windows）。"
+        "description": "录制期间暂停正在播放的媒体（例如 YouTube 视频），结束后再继续播放（Windows、Linux）。"
       },
       "appendTrailingSpace": {
         "label": "追加尾部空格",

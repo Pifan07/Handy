@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "रिकॉर्डिंग के दौरान मीडिया रोकें",
-        "description": "रिकॉर्डिंग के दौरान चल रहे मीडिया, जैसे YouTube वीडियो, को रोकें और बाद में फिर से चलाएँ (केवल Windows)।"
+        "description": "रिकॉर्डिंग के दौरान चल रहे मीडिया, जैसे YouTube वीडियो, को रोकें और बाद में फिर से चलाएँ (Windows, Linux)।"
       },
       "appendTrailingSpace": {
         "label": "आखिर में स्पेस जोड़ें",

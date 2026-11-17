@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Wstrzymaj multimedia podczas nagrywania",
-        "description": "Wstrzymuje odtwarzane multimedia, np. film w YouTube, podczas nagrywania i wznawia je potem (tylko Windows)."
+        "description": "Wstrzymuje odtwarzane multimedia, np. film w YouTube, podczas nagrywania i wznawia je potem (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Dodaj spację na końcu",

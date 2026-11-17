@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Pausar multimedia durante la grabación",
-        "description": "Pausar la reproducción multimedia, como un vídeo de YouTube, durante la grabación y reanudarla después (solo Windows)."
+        "description": "Pausar la reproducción multimedia, como un vídeo de YouTube, durante la grabación y reanudarla después (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Agregar espacio final",

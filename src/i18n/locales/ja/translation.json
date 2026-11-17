@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "録音中はメディアを一時停止",
-        "description": "録音中は YouTube 動画などの再生中のメディアを一時停止し、終了後に再開します（Windows のみ）。"
+        "description": "録音中は YouTube 動画などの再生中のメディアを一時停止し、終了後に再開します（Windows、Linux）。"
       },
       "appendTrailingSpace": {
         "label": "末尾にスペースを追加",

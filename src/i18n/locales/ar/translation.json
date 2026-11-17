@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "إيقاف الوسائط مؤقتًا أثناء التسجيل",
-        "description": "إيقاف تشغيل الوسائط مثل فيديو YouTube مؤقتًا أثناء التسجيل ثم استئنافه بعد ذلك (Windows فقط)."
+        "description": "إيقاف تشغيل الوسائط مثل فيديو YouTube مؤقتًا أثناء التسجيل ثم استئنافه بعد ذلك (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "إضافة مسافة تابعة",

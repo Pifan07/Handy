@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Pausar Mídia Durante a Gravação",
-        "description": "Pausar mídia em reprodução, como um vídeo do YouTube, durante a gravação e retomá-la depois (somente Windows)."
+        "description": "Pausar mídia em reprodução, como um vídeo do YouTube, durante a gravação e retomá-la depois (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Adicionar Espaço Final",

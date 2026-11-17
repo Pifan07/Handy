@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Posa en pausa els mitjans durant l'enregistrament",
-        "description": "Posa en pausa els mitjans en reproducció, com un vídeo de YouTube, durant l'enregistrament i reprèn-los després (només Windows)."
+        "description": "Posa en pausa els mitjans en reproducció, com un vídeo de YouTube, durant l'enregistrament i reprèn-los després (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Afegiu un espai al final",

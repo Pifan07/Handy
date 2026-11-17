@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Media pauzeren tijdens opname",
-        "description": "Afspelende media zoals een YouTube-video pauzeren tijdens de opname en daarna hervatten (alleen Windows)."
+        "description": "Afspelende media zoals een YouTube-video pauzeren tijdens de opname en daarna hervatten (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Spatie achteraan toevoegen",

@@ -1,0 +1,35 @@
+# Personal, unsigned Windows and Linux x64 builds of this fork (not part of any
+# upstream PR).
+name: "Personal Build"
+
+on:
+  push:
+    branches: ["custom/**"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: "windows-latest"
+            target: "x86_64-pc-windows-msvc"
+            args: ""
+          - platform: "ubuntu-22.04" # .deb for Ubuntu/Debian/Mint
+            target: "x86_64-unknown-linux-gnu"
+            args: "--bundles deb"
+          - platform: "ubuntu-24.04"
+            target: "x86_64-unknown-linux-gnu"
+            args: "--bundles appimage"
+    uses: ./.github/workflows/build.yml
+    with:
+      platform: ${{ matrix.platform }}
+      target: ${{ matrix.target }}
+      build-args: ${{ matrix.args }}
+      sign-binaries: false
+      asset-prefix: "handy-personal"
+      upload-artifacts: true
+    secrets: inherit

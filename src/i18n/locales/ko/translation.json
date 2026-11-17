@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "녹음 중 미디어 일시 정지",
-        "description": "녹음하는 동안 YouTube 동영상 등 재생 중인 미디어를 일시 정지하고 이후 다시 재생합니다(Windows 전용)."
+        "description": "녹음하는 동안 YouTube 동영상 등 재생 중인 미디어를 일시 정지하고 이후 다시 재생합니다(Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "끝 공백 추가",

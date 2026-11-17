@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "השהה מדיה בזמן הקלטה",
-        "description": "השהה מדיה שמתנגנת, כמו סרטון YouTube, בזמן ההקלטה והמשך אותה לאחר מכן (Windows בלבד)."
+        "description": "השהה מדיה שמתנגנת, כמו סרטון YouTube, בזמן ההקלטה והמשך אותה לאחר מכן (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "הוסף רווח בסוף",

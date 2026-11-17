@@ -504,7 +504,7 @@ pub struct AppSettings {
     #[serde(default)]
     pub mute_immediately: bool,
     // Pause playing media (e.g. a YouTube video) while recording and resume it
-    // afterwards. Only has an effect on Windows.
+    // afterwards. Only has an effect on Windows and Linux.
     #[serde(default)]
     pub pause_while_recording: bool,
     #[serde(default)]

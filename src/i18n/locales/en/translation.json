@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Pause Media While Recording",
-        "description": "Pause playing media such as a YouTube video while recording and resume it afterwards (Windows only)."
+        "description": "Pause playing media such as a YouTube video while recording and resume it afterwards (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Append Trailing Space",

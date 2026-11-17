@@ -151,7 +151,18 @@ impl MediaControlBackend for PlatformBackend {
     }
 }
 
-#[cfg(not(target_os = "windows"))]
+#[cfg(target_os = "linux")]
+impl MediaControlBackend for PlatformBackend {
+    fn pause_all(&self) -> Result<Vec<PausedSession>, String> {
+        linux_backend::pause_all_playing()
+    }
+
+    fn resume(&self, sessions: &[PausedSession]) -> Result<(), String> {
+        linux_backend::resume(sessions)
+    }
+}
+
+#[cfg(not(any(target_os = "windows", target_os = "linux")))]
 impl MediaControlBackend for PlatformBackend {
     fn pause_all(&self) -> Result<Vec<PausedSession>, String> {
         Ok(Vec::new())
@@ -286,6 +297,169 @@ mod windows_backend {
 
     fn session_missing(code: HRESULT) -> bool {
         code == HRESULT(0x80070490u32 as i32) || code == HRESULT(0x80004005u32 as i32)
+    }
+}
+
+/// Linux backend over MPRIS, the D-Bus interface browsers and media players
+/// expose. Uses the `gdbus` CLI (part of GLib, present on GNOME, KDE, Mint,
+/// etc.) like the mute code uses wpctl/pactl, so no D-Bus crate is needed.
+#[cfg(target_os = "linux")]
+mod linux_backend {
+    use super::PausedSession;
+    use std::process::Command;
+
+    const MPRIS_PREFIX: &str = "org.mpris.MediaPlayer2.";
+    const MPRIS_PATH: &str = "/org/mpris/MediaPlayer2";
+    const PLAYER_IFACE: &str = "org.mpris.MediaPlayer2.Player";
+
+    pub fn pause_all_playing() -> Result<Vec<PausedSession>, String> {
+        let mut paused = Vec::new();
+        for name in players()? {
+            if status(&name).as_deref() != Some("Playing") {
+                continue;
+            }
+            let title = title(&name);
+            if call(&name, &format!("{PLAYER_IFACE}.Pause"), &[]).is_some() {
+                paused.push(PausedSession {
+                    source_app_id: name,
+                    title,
+                });
+            }
+        }
+        Ok(paused)
+    }
+
+    pub fn resume(paused: &[PausedSession]) -> Result<(), String> {
+        for session in paused {
+            let name = &session.source_app_id;
+            // Leave the player alone if the user already started it again or
+            // switched to something else in the meantime.
+            if status(name).as_deref() != Some("Paused") || title(name) != session.title {
+                continue;
+            }
+            let _ = call(name, &format!("{PLAYER_IFACE}.Play"), &[]);
+        }
+        Ok(())
+    }
+
+    fn players() -> Result<Vec<String>, String> {
+        let output = gdbus(&[
+            "--dest",
+            "org.freedesktop.DBus",
+            "--object-path",
+            "/org/freedesktop/DBus",
+            "--method",
+            "org.freedesktop.DBus.ListNames",
+        ])
+        .ok_or_else(|| "Failed to list D-Bus names (is gdbus installed?)".to_string())?;
+        Ok(quoted_strings(&output)
+            .into_iter()
+            .filter(|name| name.starts_with(MPRIS_PREFIX))
+            .collect())
+    }
+
+    fn status(name: &str) -> Option<String> {
+        let output = get_property(name, "PlaybackStatus")?;
+        quoted_strings(&output).into_iter().next()
+    }
+
+    fn title(name: &str) -> String {
+        get_property(name, "Metadata")
+            .and_then(|output| metadata_title(&output))
+            .unwrap_or_default()
+    }
+
+    fn get_property(name: &str, property: &str) -> Option<String> {
+        call(
+            name,
+            "org.freedesktop.DBus.Properties.Get",
+            &[PLAYER_IFACE, property],
+        )
+    }
+
+    fn call(name: &str, method: &str, args: &[&str]) -> Option<String> {
+        let mut gdbus_args = vec![
+            "--dest",
+            name,
+            "--object-path",
+            MPRIS_PATH,
+            "--method",
+            method,
+        ];
+        gdbus_args.extend_from_slice(args);
+        gdbus(&gdbus_args)
+    }
+
+    fn gdbus(args: &[&str]) -> Option<String> {
+        let output = Command::new("gdbus")
+            .args(["call", "--session", "--timeout", "2"])
+            .args(args)
+            .output()
+            .ok()?;
+        output
+            .status
+            .success()
+            .then(|| String::from_utf8_lossy(&output.stdout).into_owned())
+    }
+
+    /// Returns every quoted string in gdbus' GVariant text output. Strings are
+    /// printed in single quotes, or double quotes if they contain one.
+    fn quoted_strings(text: &str) -> Vec<String> {
+        let mut strings = Vec::new();
+        let mut chars = text.chars();
+        while let Some(c) = chars.next() {
+            if c != '\'' && c != '"' {
+                continue;
+            }
+            let mut value = String::new();
+            while let Some(next) = chars.next() {
+                match next {
+                    '\\' => {
+                        if let Some(escaped) = chars.next() {
+                            value.push(escaped);
+                        }
+                    }
+                    q if q == c => break,
+                    other => value.push(other),
+                }
+            }
+            strings.push(value);
+        }
+        strings
+    }
+
+    fn metadata_title(metadata: &str) -> Option<String> {
+        let strings = quoted_strings(metadata);
+        let index = strings.iter().position(|s| s == "xesam:title")?;
+        strings.get(index + 1).cloned()
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[test]
+        fn parses_player_names() {
+            let output = "(['org.freedesktop.DBus', ':1.42', 'org.mpris.MediaPlayer2.firefox.instance_1_23', 'org.mpris.MediaPlayer2.spotify'],)\n";
+            let names: Vec<String> = quoted_strings(output)
+                .into_iter()
+                .filter(|n| n.starts_with(MPRIS_PREFIX))
+                .collect();
+            assert_eq!(
+                names,
+                vec![
+                    "org.mpris.MediaPlayer2.firefox.instance_1_23",
+                    "org.mpris.MediaPlayer2.spotify"
+                ]
+            );
+        }
+
+        #[test]
+        fn parses_status_and_title() {
+            assert_eq!(quoted_strings("(<'Playing'>,)\n"), vec!["Playing"]);
+            let metadata = "(<{'mpris:trackid': <objectpath '/org/mpris/MediaPlayer2/firefox'>, 'xesam:title': <\"It's a video\">, 'xesam:artist': <['Someone']>}>,)\n";
+            assert_eq!(metadata_title(metadata).as_deref(), Some("It's a video"));
+        }
     }
 }
 

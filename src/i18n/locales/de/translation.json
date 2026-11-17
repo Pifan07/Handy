@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Medien während der Aufnahme pausieren",
-        "description": "Laufende Medien wie ein YouTube-Video während der Aufnahme pausieren und danach fortsetzen (nur Windows)."
+        "description": "Laufende Medien wie ein YouTube-Video während der Aufnahme pausieren und danach fortsetzen (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Leerzeichen anhängen",

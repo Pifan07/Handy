@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Jeda Media Saat Merekam",
-        "description": "Jeda media yang sedang diputar, seperti video YouTube, selama perekaman lalu lanjutkan sesudahnya (hanya Windows)."
+        "description": "Jeda media yang sedang diputar, seperti video YouTube, selama perekaman lalu lanjutkan sesudahnya (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Tambahkan Spasi di Akhir",

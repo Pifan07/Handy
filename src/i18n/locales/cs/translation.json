@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Pozastavit média při nahrávání",
-        "description": "Během nahrávání pozastavit přehrávaná média, například video na YouTube, a poté je obnovit (pouze Windows)."
+        "description": "Během nahrávání pozastavit přehrávaná média, například video na YouTube, a poté je obnovit (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Přidat koncovou mezeru",

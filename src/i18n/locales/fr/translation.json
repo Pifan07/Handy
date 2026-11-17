@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Mettre les médias en pause pendant l'enregistrement",
-        "description": "Mettre en pause les médias en cours de lecture, comme une vidéo YouTube, pendant l'enregistrement puis les reprendre (Windows uniquement)."
+        "description": "Mettre en pause les médias en cours de lecture, comme une vidéo YouTube, pendant l'enregistrement puis les reprendre (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Ajouter une espace final",

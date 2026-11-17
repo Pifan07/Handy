@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Kayıt Sırasında Medyayı Duraklat",
-        "description": "Kayıt sırasında YouTube videosu gibi oynatılan medyayı duraklatır ve sonra devam ettirir (yalnızca Windows)."
+        "description": "Kayıt sırasında YouTube videosu gibi oynatılan medyayı duraklatır ve sonra devam ettirir (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Sonuna Boşluk Ekle",

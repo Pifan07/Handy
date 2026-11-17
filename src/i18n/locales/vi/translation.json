@@ -818,7 +818,7 @@
       },
       "pauseWhileRecording": {
         "label": "Tạm dừng phương tiện khi ghi âm",
-        "description": "Tạm dừng phương tiện đang phát như video YouTube trong khi ghi âm và phát tiếp sau đó (chỉ Windows)."
+        "description": "Tạm dừng phương tiện đang phát như video YouTube trong khi ghi âm và phát tiếp sau đó (Windows, Linux)."
       },
       "appendTrailingSpace": {
         "label": "Thêm dấu cách cuối",
